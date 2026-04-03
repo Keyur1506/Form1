@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Registration Form Version 1</title>
 
-<!-- Internal CSS -->
 <style>
 * {
   margin: 0;
@@ -22,7 +21,7 @@ body {
   background: linear-gradient(135deg, #141e30, #243b55);
 }
 
-/* Glass Container */
+/* Container */
 .container {
   width: 500px;
   padding: 30px;
@@ -51,11 +50,12 @@ h2 {
   gap: 15px;
 }
 
-/* Inputs */
+/* Input Box */
 .input-box {
   position: relative;
 }
 
+/* Inputs & Select */
 .input-box input,
 .input-box select {
   width: 100%;
@@ -64,6 +64,12 @@ h2 {
   border: none;
   outline: none;
   background: rgba(255,255,255,0.9);
+  font-size: 14px;
+}
+
+/* Remove default arrow style (optional) */
+.input-box select {
+  appearance: none;
 }
 
 /* Floating Label */
@@ -73,11 +79,14 @@ h2 {
   top: 12px;
   color: gray;
   transition: 0.3s;
+  pointer-events: none;
   background: transparent;
 }
 
 .input-box input:focus + label,
-.input-box input:valid + label {
+.input-box input:valid + label,
+.input-box select:focus + label,
+.input-box select:valid + label {
   top: -8px;
   font-size: 12px;
   color: #00c6ff;
@@ -90,11 +99,16 @@ textarea {
   padding: 12px;
   border-radius: 10px;
   border: none;
+  resize: none;
 }
 
 /* Checkbox */
 .checkbox {
   margin: 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
 }
 
 /* Button */
@@ -107,6 +121,7 @@ textarea {
   color: white;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 16px;
 }
 
 .btn:hover {
@@ -123,43 +138,43 @@ textarea {
     <h2>Create Account</h2>
     <p class="subtitle">Start your journey ✨</p>
 
-    <form>
+    <form action="#" method="POST">
 
         <div class="form-grid">
 
             <div class="input-box">
-                <input type="text" required>
+                <input type="text" name="firstName" required>
                 <label>First Name</label>
             </div>
 
             <div class="input-box">
-                <input type="text" required>
+                <input type="text" name="lastName" required>
                 <label>Last Name</label>
             </div>
 
             <div class="input-box">
-                <input type="email" required>
+                <input type="email" name="email" required>
                 <label>Email</label>
             </div>
 
             <div class="input-box">
-                <input type="tel" required>
+                <input type="tel" name="phone" required>
                 <label>Phone</label>
             </div>
 
             <div class="input-box">
-                <input type="password" required>
+                <input type="password" name="password" required>
                 <label>Password</label>
             </div>
 
             <div class="input-box">
-                <input type="password" required>
+                <input type="password" name="confirmPassword" required>
                 <label>Confirm Password</label>
             </div>
 
             <div class="input-box">
-                <select required>
-                    <option value=""></option>
+                <select name="country" required>
+                    <option value="" disabled selected>Select Country</option>
                     <option>India</option>
                     <option>USA</option>
                     <option>UK</option>
@@ -168,8 +183,8 @@ textarea {
             </div>
 
             <div class="input-box">
-                <select required>
-                    <option value=""></option>
+                <select name="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
                     <option>Male</option>
                     <option>Female</option>
                 </select>
@@ -178,14 +193,14 @@ textarea {
 
         </div>
 
-        <textarea placeholder="Address" required></textarea>
+        <textarea name="address" placeholder="Address" required></textarea>
 
-        <div class="checkbox">
-            <input type="checkbox" required>
-            <span>I agree to Terms</span>
-        </div>
+        <label class="checkbox">
+            <input type="checkbox" name="terms" required>
+            I agree to Terms
+        </label>
 
-        <button class="btn">Register</button>
+        <button type="submit" class="btn">Register</button>
 
     </form>
 
